@@ -1,0 +1,8 @@
+{
+    "Movie": {
+        "save_path": "/media/Jellyfin/Movies"
+    },
+    "Show": {
+        "save_path": "/media/Jellyfin/Shows"
+    }
+}

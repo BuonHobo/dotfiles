@@ -1,0 +1,11 @@
+FROM docker.io/library/alpine
+
+EXPOSE 8080 6881 6881/udp
+
+RUN apk add qbittorrent-nox
+
+ARG PROFILE_DIR=.config
+
+COPY $PROFILE_DIR/qBittorrent /config/qBittorrent
+
+ENTRYPOINT qbittorrent-nox --profile=/config

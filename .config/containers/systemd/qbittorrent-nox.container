@@ -1,0 +1,16 @@
+[Container]
+Image=localhost/buonhobo/qbittorrent-nox:4.6.2
+PublishPort=6881:6881/tcp
+PublishPort=6881:6881/udp
+PublishPort=8080:8080/tcp
+Volume=/home/shared/:/media:z
+Volume=/home/shared/.config/:/config:z
+ContainerName=qbittorrent-nox
+
+[Service]
+# Inform systemd of additional exit status
+SuccessExitStatus=0 143
+
+[Install]
+# Start by default on boot
+WantedBy=default.target
