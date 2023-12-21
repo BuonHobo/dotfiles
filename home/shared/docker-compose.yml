@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3"
 services:
   uscitibot:
     image: buonhobo/uscitibot:latest
@@ -6,6 +6,13 @@ services:
     network_mode: 'host'
     volumes:
       - /home/shared/.config/uscitibot:/uscitibot
+    deploy:
+      restart_policy:
+        delay: 40s
+        window: 240s
+        max_attempts: 4
+        condition: on-failure
+    restart: unless-stopped
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
