@@ -42,7 +42,7 @@ services:
       - TZ=Europe/Rome
       - WEBUI_PORT=8080
     volumes:
-      - /home/shared/.config:/config
+      - /home/shared/.config/qbittorrent-nox:/config
       - /home/shared:/downloads
     ports:
       - 8080:8080
