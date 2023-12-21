@@ -1,0 +1,44 @@
+version: "2.1"
+services:
+  uscitibot:
+    image: buonhobo/uscitibot:latest
+    container_name: uscitibot
+    network_mode: 'host'
+    volumes:
+      - /home/shared/.config/uscitibot:/uscitibot
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+      - JELLYFIN_PublishedServerUrl=192.168.0.202 #optional
+    volumes:
+      - /home/shared/.config/jellyfin:/config
+      - /home/shared/Jellyfin/Shows:/data/tvshows
+      - /home/shared/Jellyfin/Movies:/data/movies
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+      - WEBUI_PORT=8080
+    volumes:
+      - /home/shared/.config:/config
+      - /home/shared:/downloads
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped

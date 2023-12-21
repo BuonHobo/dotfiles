@@ -1,5 +1,0 @@
-sudo usermod -aG render $UID
-sudo usermod -aG video $UID
-
-podman run --rm  --replace  --detach  --label "io.containers.autoupdate=registry"  --name jellyfin  --publish 8096:8096/tcp  --user $(id -u):$(id -g)  --userns keep-id  --volume /home/shared/.cache/jellyfin:/cache:Z  --volume /home/shared/.config/jellyfin:/config:Z  --device /dev/dri:/dev/dri  --group-add keep-groups  --mount type=bind,source=/home/shared/Jellyfin,destination=/media,ro=true,relabel=shared docker.io/jellyfin/jellyfin:latest
-
