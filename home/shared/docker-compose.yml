@@ -1,6 +1,9 @@
 version: "3"
 services:
   uscitibot:
+    build:
+      context: .config/uscitibot
+      dockerfile: Dockerfile
     image: buonhobo/uscitibot:latest
     container_name: uscitibot
     network_mode: 'host'
