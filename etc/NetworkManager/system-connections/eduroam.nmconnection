@@ -15,7 +15,7 @@ proto=rsn;
 
 [802-1x]
 altsubject-matches=DNS:eduroam.uniroma3.it;
-ca-cert=/var/home/buonhobo/.config/cat_installer/ca.pem
+ca-cert=/home/buonhobo/.config/cat_installer/ca.pem
 eap=ttls;
 identity=ale.bonini2
 password= ** REMEMBER TO INSERT PASSWORD **
