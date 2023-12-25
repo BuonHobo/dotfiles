@@ -53,3 +53,15 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    restart: unless-stopped
+    network_mode: "host"
+    command:
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
+    volumes:
+      - /home/shared/.config/ngrok.yml:/etc/ngrok.yml

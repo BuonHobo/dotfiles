@@ -1,0 +1,13 @@
+authtoken: ** CENSORED **
+version: 2
+tunnels:
+  jellyfin:
+    addr: 8096
+    proto: http
+    domain: present-weekly-colt.ngrok-free.app
+  qBittorrent-nox:
+    addr: 8080
+    proto: http 
+  ssh:
+    addr: 22
+    proto: tcp
