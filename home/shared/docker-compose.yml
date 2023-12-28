@@ -71,7 +71,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - /home/shared:/shares/shared
+      - /home/shared:/shares/
     environment:
       SAMBA_CONF_LOG_LEVEL: 3
       WSDD2_DISABLE: 1
@@ -82,4 +82,4 @@ services:
       UID_buonhobo: 1000
       GROUPS_buonhobo: users
 
-      SAMBA_VOLUME_CONFIG_shared: "[shared]; path = /shares/shared; writeable = yes; readable yes; force user = buonhobo; force group = users; create mask = 755; directory mask = 755;"
+      SAMBA_VOLUME_CONFIG_shared: "[shared]; path = /shares; writeable = yes; readable yes; force user = buonhobo; force group = users; create mask = 755; directory mask = 755;"
