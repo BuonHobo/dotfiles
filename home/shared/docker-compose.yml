@@ -83,3 +83,29 @@ services:
       GROUPS_buonhobo: users
 
       SAMBA_VOLUME_CONFIG_shared: "[shared]; path = /shares; writeable = yes; readable yes; force user = buonhobo; force group = users; create mask = 755; directory mask = 755;"
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - /home/shared/.config/sonarr:/config
+      - /home/shared/Jellyfin/Shows:/tv #optional
+      - /home/shared/Downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - /home/shared/.config/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
