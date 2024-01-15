@@ -11,9 +11,7 @@ services:
       - /home/shared/.config/uscitibot:/uscitibot
     deploy:
       restart_policy:
-        delay: 40s
-        window: 240s
-        max_attempts: 4
+        delay: 180s
         condition: on-failure
     restart: unless-stopped
   jellyfin:
