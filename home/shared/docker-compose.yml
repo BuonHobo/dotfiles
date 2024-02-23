@@ -1,20 +1,20 @@
 version: "3"
 services:
-  uscitibot:
-    build:
-      context: /home/shared/.config/uscitibot
-      dockerfile: Dockerfile
-    image: buonhobo/uscitibot:latest
-    container_name: uscitibot
-    network_mode: 'host'
-    profiles: ["uscitibot"]
-    volumes:
-      - /home/shared/.config/uscitibot:/uscitibot
-    deploy:
-      restart_policy:
-        delay: 180s
-        condition: on-failure
-    restart: unless-stopped
+#  uscitibot:
+#    build:
+#      context: /home/shared/.config/uscitibot
+#      dockerfile: Dockerfile
+#    image: buonhobo/uscitibot:latest
+#    container_name: uscitibot
+#    network_mode: 'host'
+#    profiles: ["uscitibot"]
+#    volumes:
+#      - /home/shared/.config/uscitibot:/uscitibot
+#    deploy:
+#      restart_policy:
+#        delay: 180s
+#        condition: on-failure
+#    restart: unless-stopped
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
@@ -23,7 +23,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Rome
-      - JELLYFIN_PublishedServerUrl=192.168.0.202 #optional
+      - JELLYFIN_PublishedServerUrl=192.168.1.137 #optional
     volumes:
       - /home/shared/.config/jellyfin:/config
       - /home/shared/Jellyfin/Shows:/data/tvshows
@@ -122,4 +122,18 @@ services:
       - /home/shared/Downloads:/downloads #optional
     ports:
       - 7878:7878
+    restart: unless-stopped
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - /home/shared/.config/bazarr:/config
+      - /home/shared/Jellyfin/Movies:/movies #optional
+      - /home/shared/Jellyfin/Shows:/tv #optional
+    ports:
+      - 6767:6767
     restart: unless-stopped
