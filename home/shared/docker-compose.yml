@@ -1,20 +1,19 @@
 version: "3"
 services:
-#  uscitibot:
-#    build:
-#      context: /home/shared/.config/uscitibot
-#      dockerfile: Dockerfile
-#    image: buonhobo/uscitibot:latest
-#    container_name: uscitibot
-#    network_mode: 'host'
-#    profiles: ["uscitibot"]
-#    volumes:
-#      - /home/shared/.config/uscitibot:/uscitibot
-#    deploy:
-#      restart_policy:
-#        delay: 180s
-#        condition: on-failure
-#    restart: unless-stopped
+  uscitibot:
+    build:
+      context: /home/shared/.config/uscitibot
+      dockerfile: Dockerfile
+    image: buonhobo/uscitibot:latest
+    container_name: uscitibot
+    network_mode: 'host'
+    volumes:
+      - /home/shared/.config/uscitibot:/uscitibot
+    deploy:
+      restart_policy:
+        delay: 180s
+        condition: on-failure
+    restart: unless-stopped
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
