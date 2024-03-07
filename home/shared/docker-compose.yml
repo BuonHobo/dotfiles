@@ -139,7 +139,7 @@ services:
       - 6767:6767
     restart: unless-stopped
   code-server:
-    image: linuxserver/code-server:4.22.0
+    image: lscr.io/linuxserver/code-server:4.22.0
     container_name: code-server
     restart: unless-stopped
     environment:
@@ -147,8 +147,10 @@ services:
       - SUDO_PASSWORD=assword # If this optional variable is set, user will have sudo access in the code-server terminal with the specified password.
       - PUID=1000 # for UserID
       - PGID=1000 # for GroupID
+      - DEFAULT_WORKSPACE=/workspace #optional
     volumes:
       - /home/shared/.config/code-server:/config # Contains all relevant configuration files.
+      - /home/shared/Documents/workspace:/workspace
     ports:
       - 8443:8443/tcp # Web UI
   watchtower:
