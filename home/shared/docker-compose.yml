@@ -5,6 +5,8 @@ services:
       context: /home/shared/.config/uscitibot
       dockerfile: Dockerfile
     image: buonhobo/uscitibot:latest
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     container_name: uscitibot
     network_mode: 'host'
     volumes:
@@ -17,7 +19,7 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    hostname: honor
+    hostname: minipc
     environment:
       - PUID=1000
       - PGID=1000
@@ -149,3 +151,9 @@ services:
       - /home/shared/.config/code-server:/config # Contains all relevant configuration files.
     ports:
       - 8443:8443/tcp # Web UI
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
