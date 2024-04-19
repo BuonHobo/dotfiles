@@ -1,2 +1,2 @@
 # dotfiles
-st
+stiAAAA
