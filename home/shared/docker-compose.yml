@@ -27,8 +27,8 @@ services:
       - JELLYFIN_PublishedServerUrl=192.168.1.137 #optional
     volumes:
       - /home/shared/.config/jellyfin:/config
-      - /home/shared/Jellyfin/Shows:/data/tvshows
-      - /home/shared/Jellyfin/Movies:/data/movies
+      - /home/shared/Media/Jellyfin/Shows:/data/tvshows
+      - /home/shared/Media/Jellyfin/Movies:/data/movies
     devices:
       - /dev/dri:/dev/dri
     ports:
@@ -42,30 +42,18 @@ services:
     container_name: qbittorrent
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=100
       - TZ=Europe/Rome
       - WEBUI_PORT=8080
+      - UMASK=000
     volumes:
       - /home/shared/.config/qbittorrent-nox:/config
-      - /home/shared:/downloads
+      - /home/shared/Media:/data
     ports:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
-  ngrok:
-    image: ngrok/ngrok:latest
-    container_name: ngrok
-    restart: unless-stopped
-    network_mode: "host"
-    profiles: ["ngrok"]
-    command:
-      - "start"
-      - "--all"
-      - "--config"
-      - "/etc/ngrok.yml"
-    volumes:
-      - /home/shared/.config/ngrok.yml:/etc/ngrok.yml
   samba:
     container_name: samba
     image: ghcr.io/servercontainers/samba
@@ -93,8 +81,7 @@ services:
       - TZ=Europe/Rome
     volumes:
       - /home/shared/.config/sonarr:/config
-      - /home/shared/Jellyfin/Shows:/tv #optional
-      - /home/shared/Downloads:/downloads #optional
+      - /home/shared/Media:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -119,8 +106,7 @@ services:
       - TZ=Europe/Rome
     volumes:
       - /home/shared/.config/radarr:/config
-      - /home/shared/Jellyfin/Movies:/movies #optional
-      - /home/shared/Downloads:/downloads #optional
+      - /home/shared/Media/:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -133,8 +119,8 @@ services:
       - TZ=Europe/Rome
     volumes:
       - /home/shared/.config/bazarr:/config
-      - /home/shared/Jellyfin/Movies:/movies #optional
-      - /home/shared/Jellyfin/Shows:/tv #optional
+      - /home/shared/Media/Jellyfin/Movies:/movies #optional
+      - /home/shared/Media/Jellyfin/Shows:/tv #optional
     ports:
       - 6767:6767
     restart: unless-stopped
