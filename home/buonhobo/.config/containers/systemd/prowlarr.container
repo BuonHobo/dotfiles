@@ -1,0 +1,22 @@
+[Unit]
+Description=prowlarr podman container from linuxserver
+Wants=network-online.target
+After=network-online.target
+
+
+[Container]
+Image=lscr.io/linuxserver/prowlarr
+ContainerName=prowlarr
+Environment=PUID=1000
+Environment=PGID=1000
+Environment=TZ=Europe/Rome
+Volume=/home/shared/.config/prowlarr:/config:Z
+PublishPort=9696:9696
+AutoUpdate=registry
+Network=servarr.network
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

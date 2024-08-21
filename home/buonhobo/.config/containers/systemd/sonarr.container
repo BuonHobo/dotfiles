@@ -1,0 +1,23 @@
+[Unit]
+Description=sonarr podman container from linuxserver
+Wants=network-online.target
+After=network-online.target
+
+
+[Container]
+Image=lscr.io/linuxserver/sonarr
+ContainerName=sonarr
+Environment=PUID=1000
+Environment=PGID=1000
+Environment=TZ=Europe/Rome
+Volume=/home/shared/.config/sonarr:/config:Z
+Volume=/home/shared/Media:/data:z
+PublishPort=8989:8989
+AutoUpdate=registry
+Network=servarr.network
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

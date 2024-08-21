@@ -1,0 +1,5 @@
+[Unit]
+Description=podman fleet network
+
+[Network]
+NetworkName=servarr
