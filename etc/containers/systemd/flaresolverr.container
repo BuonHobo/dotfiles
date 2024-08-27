@@ -1,0 +1,19 @@
+[Unit]
+Description=flaresolverr podman container from linuxserver
+Wants=network-online.target
+After=network-online.target
+
+
+[Container]
+Image=ghcr.io/flaresolverr/flaresolverr:latest
+ContainerName=flaresolverr
+Environment=TZ=Europe/Rome
+PublishPort=8191:8191
+AutoUpdate=registry
+Network=servarr.network
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
