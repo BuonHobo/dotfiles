@@ -1,5 +1,2 @@
 # dotfiles
-O
-stiAAAA
-ma perché?
-provon
+Ennesimo Test
