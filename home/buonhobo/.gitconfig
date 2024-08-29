@@ -1,7 +1,7 @@
 [user]
 	name = buonhobo
 	email = bnnalx@gmail.com
-	signingkey = /home/buonhobo/.ssh/id_ed25519.pub
+	signingkey = /home/buonhobo/.ssh/key
 [commit]
 	gpgsign = true
 [gpg]
