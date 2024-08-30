@@ -10,10 +10,11 @@ ContainerName=flaresolverr
 Environment=TZ=Europe/Rome
 PublishPort=8191:8191
 AutoUpdate=registry
+SecurityLabelDisable=true
 Network=servarr.network
 
 [Service]
 Restart=always
 
-[Install]
-WantedBy=default.target
+# [Install]
+# WantedBy=default.target

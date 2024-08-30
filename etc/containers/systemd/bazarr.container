@@ -7,8 +7,8 @@ After=network-online.target
 [Container]
 Image=lscr.io/linuxserver/bazarr
 ContainerName=bazarr
-Environment=PUID=1000
-Environment=PGID=1000
+Environment=PUID=1001
+Environment=PGID=1001
 Environment=TZ=Europe/Rome
 Volume=/home/shared/.config/bazarr:/config:Z
 Volume=/home/shared/Media:/data:z

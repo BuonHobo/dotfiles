@@ -7,8 +7,8 @@ After=network-online.target
 [Container]
 Image=lscr.io/linuxserver/jellyfin
 ContainerName=jellyfin
-Environment=PUID=1000
-Environment=PGID=1000
+Environment=PUID=1001
+Environment=PGID=1001
 Environment=TZ=Europe/Rome
 Environment=WEBUI_PORT=8080
 HostName=minipc
@@ -21,7 +21,7 @@ PublishPort=7359:7359/udp
 PublishPort=1900:1900/udp
 AutoUpdate=registry
 AddDevice=/dev/dri
-Network=servarr.network
+
 
 [Service]
 Restart=always

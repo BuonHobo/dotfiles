@@ -7,8 +7,8 @@ After=network-online.target
 [Container]
 Image=lscr.io/linuxserver/qbittorrent
 ContainerName=qbittorrent
-Environment=PUID=1000
-Environment=PGID=1000
+Environment=PUID=1001
+Environment=PGID=1001
 Environment=TZ=Europe/Rome
 Environment=WEBUI_PORT=8080
 Volume=/home/shared/.config/qbittorrent-nox:/config:Z

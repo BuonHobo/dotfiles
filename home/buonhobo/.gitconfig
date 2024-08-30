@@ -1,8 +1,8 @@
+[commit]
+	gpgSign = true
 [user]
 	name = buonhobo
 	email = bnnalx@gmail.com
-	signingkey = /home/buonhobo/.ssh/key
-[commit]
-	gpgsign = true
+	signingKey = /var/home/buonhobo/.ssh/id_ed25519
 [gpg]
 	format = ssh
