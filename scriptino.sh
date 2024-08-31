@@ -5,12 +5,13 @@ sudo ostree config set sysroot.bootloader none
 sudo tee -a /etc/rpm-ostreed.conf <<EOF
 AutomaticUpdatePolicy=stage
 EOF
+sudo systemctl enable --now rpm-ostreed-automatic.timer
 
 sudo rm /etc/yum.repos.d/{_copr:copr.fedorainfracloud.org:phracek:PyCharm.repo,fedora-cisco-openh264.repo,google-chrome.repo,rpmfusion-nonfree*}
 sudo wget --output-document /etc/yum.repos.d/tailscale.repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 rpm-ostree install cascadia-code-fonts ddcutil tailscale --apply-live
 
-# rsync ./home/buonhobo /home/ -rP
+rsync ./home/buonhobo /home/ -rP
 sudo rsync ./etc/systemd /etc/ -rP
 sudo systemctl daemon-reload
 sudo systemctl enable --now flatpak-system-update.timer
@@ -38,8 +39,7 @@ echo "Get ready to insert the private key in nano..."
 read
 nano ~/.ssh/id_ed25519
 echo "Please insert the private key password..."
-ssh-keygen -y -f ~/.ssh/id_ed25519 > ~/.ssh/id_ed25519.pub
-chmod 600 ~/.ssh/id_ed25519*
+chmod 400 ~/.ssh/id_ed25519
 
 curl -f https://zed.dev/install.sh | sh
 
