@@ -11,6 +11,9 @@ sudo rm /etc/yum.repos.d/{_copr:copr.fedorainfracloud.org:phracek:PyCharm.repo,f
 sudo wget --output-document /etc/yum.repos.d/tailscale.repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 rpm-ostree install cascadia-code-fonts ddcutil tailscale --apply-live
 
+sudo rsync ./etc/udev /etc/ -rP
+udevadm control --reload-rules && udevadm trigger
+
 rsync ./home/buonhobo /home/ -rP
 sudo rsync ./etc/systemd /etc/ -rP
 sudo systemctl daemon-reload
