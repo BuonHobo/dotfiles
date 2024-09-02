@@ -16,5 +16,7 @@ Network=servarr.network
 [Service]
 Restart=always
 
-# [Install]
-# WantedBy=default.target
+[Install]
+WantedBy=default.target
+
+# sudo setsebool -P selinuxuser_execheap 1
