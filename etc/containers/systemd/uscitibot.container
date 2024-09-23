@@ -1,0 +1,19 @@
+[Unit]
+Description=uscitibot podman container from buonhobo's github
+Wants=network-online.target
+After=network-online.target
+
+
+[Container]
+Image=ghcr.io/buonhobo/uscitibot:latest
+ContainerName=uscitibot
+Environment=TZ=Europe/Rome
+Environment=DISCORD_TOKEN=<token>
+Volume=/home/shared/.config/uscitibot:/uscitibot/data:Z
+AutoUpdate=registry
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
