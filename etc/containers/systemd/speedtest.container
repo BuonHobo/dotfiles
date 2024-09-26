@@ -8,6 +8,7 @@ After=network-online.target
 Image=lscr.io/linuxserver/speedtest-tracker:latest
 ContainerName=speedtest-tracker
 Environment=TZ=Europe/Rome
+Environment=DISPLAY_TIMEZONE=Europe/Rome
 Environment=PUID=1001
 Environment=PGID=1001
 Environment=APP_KEY=base64:O3XHKpmcPBmFDJLZ6+3heKgL32kGvqTLi1aqbWT0OjI=
