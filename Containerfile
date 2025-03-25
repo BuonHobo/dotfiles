@@ -6,6 +6,6 @@ RUN curl https://pkgs.tailscale.com/stable/fedora/tailscale.repo > /etc/yum.repo
 
 COPY smb.conf /usr/etc/samba/smb.conf
 COPY var-home-shared.mount /usr/lib/systemd/system
-COPY systemd/ /usr/share/containers/systemd/
+COPY containers/ /usr/share/containers/systemd/
 RUN mkdir -p /var/home/shared && \
     systemctl enable tailscaled.service podman-auto-update.timer var-home-shared.mount
