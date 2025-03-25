@@ -3,7 +3,7 @@ name: Build container image
 on:
   push:
     paths:
-      - ./*
+      - ./**
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
