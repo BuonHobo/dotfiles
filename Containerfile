@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-bootc:41
+FROM quay.io/fedora/fedora-bootc:latest
 
 RUN curl https://pkgs.tailscale.com/stable/fedora/tailscale.repo > /etc/yum.repos.d/tailscale.repo && \
     dnf -y install tailscale samba cockpit cockpit-files cockpit-networkmanager cockpit-ostree cockpit-podman cockpit-selinux cockpit-storaged cockpit-system && \
