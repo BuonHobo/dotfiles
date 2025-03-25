@@ -11,6 +11,7 @@ Environment=PUID=1001
 Environment=PGID=1001
 Environment=TZ=Europe/Rome
 Environment=WEBUI_PORT=8080
+# Environment=DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
 HostName=minipc
 Volume=/home/shared/.config/jellyfin:/config:Z
 Volume=/home/shared/Media/Jellyfin/Shows:/data/tvshows:z

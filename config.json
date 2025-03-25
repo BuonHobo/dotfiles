@@ -1,0 +1,14 @@
+{
+  "customizations": {
+    "user": [
+      {
+        "name": "buonhobo",
+        "key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUz+jbjEvBzjfLfWqxIDB/huByLpg4eltyyQqFadngO",
+        "groups": ["wheel"]
+      }
+    ],
+    "kernel": {
+      "append": "quiet"
+    }
+  }
+}

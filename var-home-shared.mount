@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount External Disk on /var/home/shared
+DefaultDependencies=no
+After=local-fs.target
+Before=remote-fs.target
+
+[Mount]
+What=/dev/sdb
+Where=/var/home/shared
+Type=auto
+Options=nofail,compress=zstd:1
+
+[Install]
+WantedBy=multi-user.target

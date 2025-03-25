@@ -5,9 +5,10 @@ After=network-online.target
 
 
 [Container]
-Image=ghcr.io/flaresolverr/flaresolverr:latest
+Image=docker.io/21hsmw/flaresolverr:nodriver
 ContainerName=flaresolverr
 Environment=TZ=Europe/Rome
+Environment=DRIVER=nodriver
 PublishPort=8191:8191
 AutoUpdate=registry
 SecurityLabelDisable=true
@@ -18,5 +19,3 @@ Restart=always
 
 [Install]
 WantedBy=default.target
-
-# sudo setsebool -P selinuxuser_execheap 1

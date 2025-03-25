@@ -1,6 +1,0 @@
-[Unit]
-Description=Homebrew Auto Update
-
-[Service]
-ExecStart=/home/linuxbrew/.linuxbrew/bin/brew update
-ExecStartPost=/home/linuxbrew/.linuxbrew/bin/brew  cleanup
