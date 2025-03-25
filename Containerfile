@@ -8,4 +8,4 @@ COPY smb.conf /usr/etc/samba/smb.conf
 COPY var-home-shared.mount /usr/lib/systemd/system
 COPY containers/ /usr/share/containers/systemd/
 RUN mkdir -p /var/home/shared && \
-    systemctl enable tailscaled.service podman-auto-update.timer var-home-shared.mount
+    systemctl enable tailscaled.service podman-auto-update.timer var-home-shared.mount cockpit.socket
